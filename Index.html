@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>J&J Future CFO Assessment — Consultant Evidence Cards</title>
+  <style>
+    html { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: inherit; }
+    :root {
+      --jnj-red: #EB1700;
+      --jnj-red-dark: #B81200;
+      --ink: #1f1f1f;
+      --muted: #5c5c5c;
+      --soft-muted: #7b7672;
+      --cream: #f8f4ef;
+      --warm: #efe7dd;
+      --cream-deep: #ebdfcf;
+      --cream-accent: #c9a877;
+      --surface: #ffffff;
+      --line: #e2d8cf;
+      --blue: #0f5c8c;
+      --blue-deep: #0a4a73;
+      --blue-soft: #e9f3f8;
+      --blue-tint: #cde3ee;
+      --green: #2e6b45;
+      --green-soft: #edf7f0;
+      --green-deep: #1f5234;
+      --amber: #8a5a00;
+      --amber-soft: #fff6df;
+      --risk: #a12316;
+      --risk-soft: #fff0ed;
+      --shadow: 0 18px 50px rgba(39, 31, 28, 0.10);
+      --radius: 24px;
+      --font: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background: var(--cream);
+      font-family: var(--font);
+      font-size: 16px;
+      line-height: 1.55;
+    }
+    .app {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+    .sidebar {
+      background: var(--surface);
+      border-right: 1px solid var(--line);
+      padding: 32px 24px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .brand {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--jnj-red);
+      margin-bottom: 4px;
+    }
+    .brand-sub {
+      font-size: 13px;
+      color: var(--soft-muted);
+      margin-bottom: 32px;
+      line-height: 1.4;
+    }
+    .nav-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft-muted);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .nav-item {
+      display: block;
+      padding: 12px 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      color: var(--ink);
+      font-weight: 500;
+      transition: background 0.15s;
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+    .nav-item:hover { background: var(--cream); }
+    .nav-item.active { background: var(--jnj-red); color: white; }
+    .nav-divider {
+      height: 1px;
+      background: var(--line);
+      margin: 16px 8px;
+    }
+    .nav-item.transverse { color: var(--ink); font-style: italic; }
+    .nav-item.transverse.active {
+      background: var(--cream-deep);
+      color: var(--ink);
+      font-style: italic;
+    }
+    .nav-item.transverse:hover { background: var(--warm); }
+    .nav-item.categorical { color: var(--ink); }
+    .nav-item.categorical.active {
+      background: var(--blue);
+      color: white;
+    }
+    .nav-item.categorical:hover { background: var(--blue-soft); }
+    .main {
+      padding: 48px 64px;
+      max-width: 1200px;
+      overflow-y: auto;
+    }
+    .section { display: none; }
+    .section.active { display: block; }
+    .doctrine-kicker {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--jnj-red);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .transverse-kicker {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-accent);
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-style: italic;
+    }
+    .categorical-kicker {
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .hero h1 {
+      font-size: 38px;
+      line-height: 1.15;
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+    .hero.transverse h1 { font-size: 32px; color: var(--ink); }
+    .hero.categorical h1 { font-size: 32px; color: var(--ink); }
+    .hero .lead {
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 760px;
+    }
+    .hero.transverse .lead {
+      font-style: italic;
+      color: var(--soft-muted);
+    }
+    .panel {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      border: 1px solid var(--line);
+    }
+    .panel.transverse-panel {
+      background: var(--cream);
+      border: 1px solid var(--cream-deep);
+      border-left: 4px solid var(--cream-accent);
+    }
+    .panel.categorical-panel {
+      background: var(--blue-soft);
+      border: 1px solid var(--blue-tint);
+      border-left: 4px solid var(--blue);
+    }
+    .panel.articulation-panel {
+      background: var(--cream);
+      border: 1px solid var(--cream-deep);
+      border-left: 4px solid var(--cream-accent);
+      padding: 24px 28px;
+    }
+    .panel.articulation-panel h2 {
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream-accent);
+      margin: 0 0 12px;
+      font-weight: 700;
+    }
+    .panel.articulation-panel p {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .panel h2 {
+      margin: 0 0 16px;
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .panel p { margin: 0 0 12px; }
+    .assumption {
+      background: var(--warm);
+      border-left: 4px solid var(--jnj-red);
+      padding: 16px 20px;
+      border-radius: 12px;
+      font-weight: 500;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    .panel.transverse-panel .assumption {
+      background: var(--cream-deep);
+      border-left-color: var(--cream-accent);
+    }
+    .signal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 20px 0 16px;
+    }
+    .signal {
+      padding: 18px 20px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+    }
+    .signal.positive { background: var(--green-soft); border-color: #cfe5d6; }
+    .signal.negative { background: var(--risk-soft); border-color: #f0d4ce; }
+    .signal-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .signal p { margin: 8px 0 0; font-size: 15px; line-height: 1.5; }
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 8px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
+    .tag.green { background: #d6efe0; color: var(--green); border-color: #b3dfc1; }
+    .tag.red { background: #fadcd6; color: var(--risk); border-color: #ecbeb6; }
+    .money {
+      font-weight: 600;
+      color: var(--ink);
+      background: rgba(235, 23, 0, 0.08);
+      padding: 1px 6px;
+      border-radius: 6px;
+    }
+    /* Scene blocks for positive and negative signals */
+    .scene {
+      margin-top: 14px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.65);
+      border-radius: 0 10px 10px 0;
+      font-size: 14.5px;
+      line-height: 1.55;
+      color: var(--ink);
+      font-style: italic;
+    }
+    .signal.negative .scene { border-left: 3px solid var(--risk); }
+    .signal.positive .scene { border-left: 3px solid var(--green); }
+    .scene-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      font-style: normal;
+      display: block;
+    }
+    .signal.negative .scene-label { color: var(--risk); }
+    .signal.positive .scene-label { color: var(--green-deep); }
+    .scene strong, .scene b { font-style: normal; font-weight: 600; }
+    .why {
+      background: var(--blue-soft);
+      border-left: 3px solid var(--blue);
+      padding: 12px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      margin-top: 12px;
+      color: var(--ink);
+    }
+    .panel.transverse-panel .why {
+      background: var(--surface);
+      border-left-color: var(--cream-accent);
+    }
+    .accordions { display: flex; flex-direction: column; gap: 8px; }
+    .acc {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--surface);
+    }
+    .panel.transverse-panel .acc { background: var(--surface); }
+    .acc-head {
+      padding: 14px 18px;
+      cursor: pointer;
+      font-weight: 600;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+    }
+    .acc-head:hover { background: var(--cream); }
+    .acc-arrow {
+      transition: transform 0.2s;
+      color: var(--muted);
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .acc-arrow.open { transform: rotate(90deg); }
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.25s ease;
+      padding: 0 18px;
+    }
+    .acc-body.open {
+      max-height: 4000px;
+      padding: 8px 18px 20px;
+    }
+    .response-card {
+      background: var(--blue-soft);
+      border-radius: 14px;
+      padding: 18px 22px;
+      margin-bottom: 12px;
+    }
+    .response-card h3 {
+      margin: 0 0 6px;
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--blue);
+    }
+    .response-card p { margin: 0; font-size: 15px; }
+    .overview-banner {
+      background: linear-gradient(135deg, var(--cream) 0%, var(--warm) 100%);
+      border-radius: var(--radius);
+      padding: 36px 40px;
+      margin-bottom: 32px;
+      border: 1px solid var(--line);
+    }
+    .architecture-note {
+      background: var(--cream-deep);
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-top: 16px;
+      font-size: 15px;
+      line-height: 1.6;
+      border-left: 4px solid var(--cream-accent);
+    }
+    .architecture-note strong { color: var(--ink); font-weight: 700; }
+
+    /* Strategic premises panel — sits on Overview page */
+    .premises-panel {
+      background: var(--surface);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+      border: 1px solid var(--line);
+      border-left: 4px solid var(--blue);
+    }
+    .premises-panel > .premises-kicker {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .premises-panel > h2 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .premises-panel > .premises-intro {
+      font-size: 15px;
+      color: var(--muted);
+      margin: 0 0 24px;
+      line-height: 1.55;
+      max-width: 760px;
+    }
+    .premise {
+      border-top: 1px solid var(--line);
+      padding: 20px 0 6px;
+    }
+    .premise:first-of-type { border-top: 1px solid var(--blue-tint); }
+    .premise-header {
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .premise-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--blue);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .premise-title {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--ink);
+      flex: 1;
+      line-height: 1.35;
+    }
+    .premise-short {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+      margin: 0 0 10px;
+    }
+    .premise-short .citation {
+      color: var(--muted);
+      font-size: 13px;
+      font-style: italic;
+    }
+    .premise-toggle {
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 0 0;
+      user-select: none;
+    }
+    .premise-toggle:hover { color: var(--blue-deep); }
+    .premise-toggle .pt-arrow {
+      transition: transform 0.2s;
+      font-size: 14px;
+    }
+    .premise-toggle.open .pt-arrow { transform: rotate(90deg); }
+    .premise-long {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.25s ease, margin 0.25s ease;
+      padding: 0;
+      margin: 0;
+    }
+    .premise-long.open {
+      max-height: 1500px;
+      padding: 14px 18px 16px;
+      margin: 12px 0 4px;
+      background: var(--blue-soft);
+      border-radius: 10px;
+      border-left: 3px solid var(--blue);
+    }
+    .premise-long p {
+      margin: 0 0 10px;
+      font-size: 14.5px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+    .premise-long p:last-child { margin-bottom: 0; }
+    .premise-long p strong { color: var(--ink); font-weight: 600; }
+    .premises-synthesis {
+      margin-top: 24px;
+      padding: 18px 22px;
+      background: var(--blue-soft);
+      border-radius: 12px;
+      border-left: 4px solid var(--blue-deep);
+    }
+    .premises-synthesis-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-deep);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .premises-synthesis p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--ink);
+    }
+
+    /* Categories table styling */
+    .cat-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 20px;
+      box-shadow: var(--shadow);
+    }
+    .cat-table thead th {
+      background: var(--blue-deep);
+      color: white;
+      padding: 16px 18px;
+      text-align: left;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      font-weight: 700;
+      vertical-align: top;
+    }
+    .cat-table thead th:first-child {
+      width: 180px;
+      background: var(--blue);
+    }
+    .cat-table tbody td {
+      padding: 18px 20px;
+      vertical-align: top;
+      border-top: 1px solid var(--line);
+      font-size: 14.5px;
+      line-height: 1.5;
+    }
+    .cat-table tbody tr:nth-child(odd) td { background: var(--blue-soft); }
+    .cat-table tbody tr td:first-child {
+      background: var(--blue-tint) !important;
+      font-weight: 700;
+      color: var(--blue-deep);
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+    .cat-table tbody td b { color: var(--ink); }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">J&J · CFO Assessment</div>
+      <div class="brand-sub">Consultant evidence cards — what would need to be true</div>
+
+      <div class="nav-label">Doctrines</div>
+      <div class="nav-item active" onclick="show('overview', this)">Overview</div>
+      <div class="nav-item" onclick="show('science', this)">Science-led acceleration</div>
+      <div class="nav-item" onclick="show('capability', this)">Capability-led advantage</div>
+      <div class="nav-item" onclick="show('ma', this)">Leap through M&A</div>
+
+      <div class="nav-divider"></div>
+      <div class="nav-label">Cross-cutting</div>
+      <div class="nav-item transverse" onclick="show('medtech', this)">MedTech AI question</div>
+
+      <div class="nav-divider"></div>
+      <div class="nav-label">Cross-doctrine reading</div>
+      <div class="nav-item categorical" onclick="show('categories', this)">Categories grid</div>
+    </aside>
+
+    <main class="main">
+
+      <!-- ============== OVERVIEW ============== -->
+      <section id="overview" class="section active">
+        <div class="overview-banner">
+          <div class="doctrine-kicker">Overview</div>
+          <h1 style="margin:0 0 16px;font-size:32px;line-height:1.2;">What would need to be true</h1>
+          <p style="font-size:18px;color:var(--muted);max-width:760px;margin:0 0 12px;">
+            A consultant's reference for the J&J Future CFO assessment. For each strategic doctrine,
+            the cards below name the 2035 assumption that anchors the doctrine and the 2029 signals
+            — positive and negative — that test whether the candidate can move from preference to evidence.
+          </p>
+          <div class="architecture-note">
+            <strong>Three doctrines, one transverse question, one cross-doctrine view.</strong> The candidate signs one doctrine. The MedTech AI question runs through all three. The Categories grid lets the consultant read the candidate's positions across external dimensions — patient, payer, regulator, investor — independent of doctrine.
+          </div>
+        </div>
+
+        <div class="premises-panel">
+          <div class="premises-kicker">Strategic premises behind the assessment</div>
+          <h2>The conceptual ground beneath the doctrines</h2>
+          <p class="premises-intro">
+            Three premises drawn from current strategy literature run beneath this assessment. The candidate is not expected to cite them. The candidate is expected to <em>reason within</em> them — and the consultant should listen for whether that reasoning emerges.
+          </p>
+
+          <div class="premise">
+            <div class="premise-header">
+              <div class="premise-num">Premise 1</div>
+              <div class="premise-title">AI itself will not create sustainable competitive advantage</div>
+            </div>
+            <p class="premise-short">
+              The technology will become ubiquitous, the algorithms commoditized, the talent fluid. Advantage will come from what J&J combines AI with — proprietary biology, integrated MedTech-pharma operations, clinical relationships, the residual heterogeneity that competitors cannot replicate. <span class="citation">— Wingate, Burns &amp; Barney, MIT Sloan, 2025</span>
+            </p>
+            <div class="premise-toggle" onclick="togglePremise(this)">
+              <span class="pt-label">Read more</span>
+              <span class="pt-arrow">›</span>
+            </div>
+            <div class="premise-long">
+              <p>Wingate, Burns and Barney apply Jay Barney's classical resource-based test — for an advantage to be sustainable, it must be <strong>valuable, unique to the organization, and inimitable</strong>. AI passes the first test decisively but fails the other two. Algorithms and architectures are openly shared by the AI research community. Hardware competition is fierce, with smaller models on accessible hardware closing the gap with frontier systems. Engineering talent is plentiful and growing. Even proprietary data is being eroded by synthetic data and the increasing data efficiency of newer models.</p>
+              <p>Their conclusion: AI will be a source of <strong>homogenization</strong>, not differentiation. The value AI unlocks will be unlocked for all. Companies should aim instead at what they call <strong>residual heterogeneity</strong> — the capacity to go beyond what is accessible to everyone and create something unique. For healthcare, this points to proprietary biology, clinical relationships, integrated operations, and the human creativity that AI still cannot match in extrapolation.</p>
+              <p><strong>Implication for the assessment:</strong> A doctrine that bets on AI alone — without articulating what J&J brings to AI that competitors cannot replicate — is exposed. The Level 5 candidate will name the residual heterogeneity their doctrine compounds.</p>
+            </div>
+          </div>
+
+          <div class="premise">
+            <div class="premise-header">
+              <div class="premise-num">Premise 2</div>
+              <div class="premise-title">Every source of competitive advantage is conditional</div>
+            </div>
+            <p class="premise-short">
+              Yesterday's strength becomes tomorrow's albatross when the conditions that gave it value change. The candidate must articulate not just which doctrine to back, but the conditions under which that doctrine remains advantageous — and the signals that those conditions are eroding. <span class="citation">— Christensen, MIT Sloan, 2001</span>
+            </p>
+            <div class="premise-toggle" onclick="togglePremise(this)">
+              <span class="pt-label">Read more</span>
+              <span class="pt-arrow">›</span>
+            </div>
+            <div class="premise-long">
+              <p>Christensen examined four classical sources of advantage — economies of scale, economies of scope, vertical integration, and process-based core competencies — and showed that each was a competitive advantage <strong>only under specific conditions</strong>. Toyota flattened the scale economics of car assembly. Modular architectures eroded the value of vertical integration. Codified knowledge transformed proprietary process competencies into widely accessible techniques.</p>
+              <p>His pharma example from 2001 has aged sharply: he predicted that genomic understanding would flatten the scale economics of clinical trials, transforming what had been an advantage of large companies into an albatross. Twenty-five years later, that prediction has played out — biomarker-defined sub-populations have made trials smaller, faster, and more precise.</p>
+              <p>The diagnostic question he proposes is precise: <em>what are the underlying conditions that make this source of advantage durable, and what could erode them?</em></p>
+              <p><strong>Implication for the assessment:</strong> Each of the three doctrines rests on conditions that must hold for it to remain advantageous. The Level 5 candidate articulates those conditions and identifies the signals that would tell them their doctrine is eroding — before the erosion has visibly occurred.</p>
+            </div>
+          </div>
+
+          <div class="premise">
+            <div class="premise-header">
+              <div class="premise-num">Premise 3</div>
+              <div class="premise-title">In moments of high uncertainty, the empirical record favors boldness</div>
+            </div>
+            <p class="premise-short">
+              Companies that doubled M&amp;A spending during high-uncertainty events grew nearly twice as fast as cautious peers, with no greater downside risk. The danger is not in betting too aggressively. The danger is in mistaking caution for prudence. <span class="citation">— Job, Pidun &amp; Szekasy, MIT Sloan, 2026</span>
+            </p>
+            <div class="premise-toggle" onclick="togglePremise(this)">
+              <span class="pt-label">Read more</span>
+              <span class="pt-arrow">›</span>
+            </div>
+            <div class="premise-long">
+              <p>Job, Pidun and Szekasy studied nearly 6,000 companies across 10 high-uncertainty events between 2010 and 2020 — covering disruptions like COVID-19, the Affordable Care Act, mobile computing, and the U.S.–China trade wars. They classified <strong>bold risk-takers</strong> as companies that more than doubled their M&amp;A spending during the event compared with their five-year average.</p>
+              <p>Their findings are striking. Only 10% of companies took the bold path; the majority cut M&amp;A spending by about 25%. Yet the bold cohort outperformed: <strong>6.9% revenue growth versus 3.5%, TSR 50% higher (3.6% versus 2.4% annually)</strong> over the three years following the event. Critically, downside was not greater — no higher rate of negative TSR, no higher rate of catastrophic failure.</p>
+              <p>They demolish three common myths: <em>(1)</em> that boldness requires strength — weak-momentum companies that bet bold outperformed cautious peers by 2.3 percentage points annually; <em>(2)</em> that boldness requires risk-taking experience — first-time risk-takers outperformed by 6.3 percentage points, while experienced risk-takers showed 10 points more incidence of negative TSR (overconfidence); <em>(3)</em> that boldness requires a diversified cushion — focused companies that bet bold outperformed by 10.2 percentage points.</p>
+              <p><strong>Implication for the assessment:</strong> J&amp;J in 2029 sits in precisely the kind of high-uncertainty moment the research describes. The doctrine must be evaluated not only against its merits but against the empirical fact that, in moments like this, the majority will contract — and contraction is statistically the worse bet. The Level 5 candidate will recognize this and own the audacity their doctrine requires, rather than camouflaging caution as prudence.</p>
+            </div>
+          </div>
+
+          <div class="premises-synthesis">
+            <div class="premises-synthesis-label">Synthesis</div>
+            <p>Together, these premises sharpen the question the doctrine must answer: not "<em>which AI strategy is right?</em>" but "<em>which combination of bold capital deployment, AI-enabled capability, and J&J's irreproducible enterprise advantage holds up across the conditions we can foresee — and survives the conditions we cannot?</em>"</p>
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>How to use these cards in the room</h2>
+          <p>
+            Each signal carries two layers. A short headline that names the principle — useful when the consultant wants to evoke a position in passing. And a brief scene below it that incarnates the principle in a concrete 2029 situation, with named figures, contestable numbers, and human voices the consultant can quote.
+          </p>
+          <p>
+            <strong>Light pressure:</strong> cite the headline. <strong>Sharper pressure:</strong> walk into the scene and put the candidate inside it. Let the candidate respond to a situation, not to an abstract risk or opportunity.
+          </p>
+          <div class="response-card">
+            <h3>Assessor watchpoint</h3>
+            <p>Do not over-score polished synthesis if the candidate never names the assumptions underneath the doctrine.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== SCIENCE-LED ============== -->
+      <section id="science" class="section">
+        <div class="hero">
+          <div class="doctrine-kicker">Doctrine 1</div>
+          <h1>Science-led acceleration</h1>
+          <p class="lead">J&J should concentrate AI investment where it improves scientific decision-making and accelerates selected drug-development programs.</p>
+        </div>
+        <div class="panel">
+          <div class="assumption">2035 assumption: winning pharma companies make better portfolio decisions earlier, not simply run more AI pilots.</div>
+          <p><b>Plausibility in 2029:</b> Probable enough to bet on selectively. AI is credible in trial design, patient matching, recruitment, and analytics, but proof of portfolio-level impact remains contested.</p>
+          <div class="signal-grid">
+            <div class="signal positive">
+              <div class="signal-title">Positive external 2029 signal <span class="tag green">Use to support R&D</span></div>
+              <div class="pill-row"><span class="tag">Economic</span><span class="tag">Capability</span><span class="tag">Timing</span></div>
+              <p>In 2029, a large pharma company under revenue pressure tells investors that AI-supported portfolio reviews helped it stop two mid-stage oncology programs 12–15 months earlier, avoiding <span class="money">$450–600M</span> in further development spend and redirecting capital to a biomarker-backed asset with earlier proof-of-concept potential.</p>
+              <div class="scene">
+                <span class="scene-label">Scene · 2029</span>
+                <p style="margin:0;">Q2 2029. A peer pharma's quarterly call leads with a portfolio decision the CFO would not have made a year earlier. Two mid-stage oncology programs are being stopped — both flagged by AI-supported review for biomarker patterns inconsistent with response data. Estimated savings: $530M over 18 months. The capital is redirected to a Phase II asset with earlier proof-of-concept signal. The CFO says: "AI did not tell us what to do. It made it harder to keep doing what we knew was failing."</p>
+              </div>
+            </div>
+            <div class="signal negative">
+              <div class="signal-title">Negative external 2029 signal <span class="tag red">Use to challenge hype</span></div>
+              <div class="pill-row"><span class="tag">Economic</span><span class="tag">Evidence</span></div>
+              <p>Another competitor reports a major AI productivity program, but analysts find no improvement in late-stage success rates, approval probability, or revenue timing after two years. The company saves operating cost but does not improve its growth outlook.</p>
+              <div class="scene">
+                <span class="scene-label">Scene · 2029</span>
+                <p style="margin:0;">Q3 2029. A peer pharma announces $180M in annual savings from its AI productivity program. On the same call, an analyst asks whether any approval timeline has accelerated since the program launched in 2027. The CFO says he will "take that offline." A research note the next morning is titled "Cost program, not growth program." The stock holds flat. The board's strategy committee asks the CEO whether the $1.4B cumulative spend was a productivity story dressed as strategy.</p>
+              </div>
+            </div>
+          </div>
+          <div class="why"><b>Why it matters:</b> This tests whether the CFO sees AI as a capital reallocation mechanism, not a productivity story. The question is whether AI improves R&D judgment or merely accelerates decisions management should already have made.</div>
+        </div>
+
+        <div class="panel">
+          <h2>Additional assumption cards</h2>
+          <div class="accordions">
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">AI is strategic only if it changes which assets are advanced, stopped, redesigned, or partnered. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Scientific</span><span class="tag">Economic</span></div><p>A global pharma company announces that AI-supported trial redesign helped avoid a broad Phase III expansion and instead focus on a narrower responder population, reducing expected trial spend by <span class="money">$250–350M</span> while preserving upside in a higher-confidence indication.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q3 2029. A peer pharma narrows its Phase III oncology trial from broad enrollment to a biomarker-defined responder subgroup after AI-supported pretrial modeling. Trial spend drops $290M. Expected probability of success rises from 31% to 54%. The R&D head tells the board: "We almost ran the wrong trial. The model didn't design the right one — but it showed us why the one we'd planned would fail." The decision is referenced in the proxy as a governance success.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Scientific</span><span class="tag">Economic</span></div><p>A competitor's AI analytics team identifies several new patient segments, but the company admits none changed the development plan, partnership strategy, or capital allocation. Investors treat the work as insight generation, not value creation.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q4 2029. A peer pharma's analytics function has produced 47 segmentation insights in 18 months. None has shaped a portfolio decision. The Chief Scientific Officer says privately: "We can ask better questions. We have not built the muscle to let answers change what we do." The CFO blocks a $90M expansion budget until "one decision changes because of what this team produced."</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Forces the candidate to distinguish better analysis from better decisions.</div></div></div>
+
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">Only selected disease areas have data strong enough for AI to materially improve outcomes. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Capability</span><span class="tag">Scientific</span></div><p>An industry benchmarking report shows AI-enabled trial optimization creating measurable gains in oncology and immunology, where longitudinal data is richer, but much weaker results in neuroscience and rare disease, where datasets remain fragmented.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">September 2029. Tufts CSDD publishes its first multi-sponsor benchmark of AI in clinical development. Oncology shows median 14% reduction in protocol amendments and 9% improvement in enrollment rates. Immunology mirrors the gains. Neuroscience and rare disease show no statistically meaningful improvement. The lead author tells Reuters: "AI works where the data already had structure. It does not create structure." Three CMOs reallocate their AI investment toward where their data already lives.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Capability</span><span class="tag">Risk</span></div><p>A high-profile AI trial-design pilot in a complex neurological disease produces conflicting recommendations across sites, leading the sponsor to revert to conventional design after a six-month delay.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Spring 2029. A peer pharma's flagship AI trial-design program in early Alzheimer's runs across nine sites. By month six, three sites flag that the algorithmic recommendations conflict with each other and with the protocol team's clinical judgment. The principal investigator writes to the CMO: "We're spending more time reconciling the model than designing the trial." The program reverts to conventional design. The board is told quietly.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Prevents broad "AI in R&D" language. Strong CFOs narrow the bet to where data and biology can carry it.</div></div></div>
+
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">Biology remains the dominant constraint, even if AI improves speed. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Scientific</span><span class="tag">Timing</span></div><p>A competitor uses AI to identify a stronger responder subgroup and reaches proof-of-concept nine months earlier than planned. The market reads it as evidence that AI can improve development timing when biology is already strong.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">June 2029. A peer biotech reports Phase IIa proof-of-concept in inflammatory bowel disease nine months ahead of guidance, after AI-driven biomarker analysis identified a responder subgroup the original protocol would have diluted. The stock gains 14% on the day. The CSO emphasizes: "The biology was always there. AI helped us see who the patients were faster." Three competitors with weaker underlying biology are asked on their next calls about their AI-enabled timelines. The answers are vaguer.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Scientific</span><span class="tag">Evidence</span></div><p>A widely publicized AI-designed molecule enters human trials, but early safety data disappoints. Analysts conclude that AI accelerated candidate selection but did not reduce the underlying biological risk.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">October 2029. A competitor's AI-designed oncology candidate, accelerated to clinic 14 months ahead of schedule and featured on the cover of the analyst day deck, shows unexpected hepatotoxicity in Phase I. The biotech CEO says on the call: "AI got us to this candidate faster. It did not change what biology turned out to be." The stock drops 9%. The R&D narrative for next quarter is rewritten in three days.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Keeps the room honest. AI may improve speed and confidence, but it does not make weak biology strong.</div></div></div>
+          </div>
+        </div>
+
+        <div class="panel articulation-panel">
+          <h2>MedTech articulation</h2>
+          <p>If signed, the candidate must say whether acceleration extends to MedTech R&D and procedural data, or remains pharma-only. The CFO who signs Science-led pharma-only without articulating the MedTech decision has chosen a doctrine without facing its enterprise implications. Use the MedTech AI signals (cross-cutting section) to test this.</p>
+        </div>
+      </section>
+
+      <!-- ============== CAPABILITY-LED ============== -->
+      <section id="capability" class="section">
+        <div class="hero">
+          <div class="doctrine-kicker">Doctrine 2</div>
+          <h1>Capability-led advantage</h1>
+          <p class="lead">J&J should build the internal AI, data, governance, validation, workflow, and decision infrastructure required for trusted scale.</p>
+        </div>
+        <div class="panel">
+          <div class="assumption">2035 assumption: AI tools are widely available; advantage comes from trusted data, validation, governance, and decision systems.</div>
+          <p><b>Plausibility in 2029:</b> Very plausible. Regulation and enterprise operating risk increasingly favor traceability, monitoring, and credible governance, but governance alone does not create growth.</p>
+          <div class="signal-grid">
+            <div class="signal positive">
+              <div class="signal-title">Positive external 2029 signal <span class="tag green">Use to support CIO</span></div>
+              <div class="pill-row"><span class="tag">Regulatory</span><span class="tag">Trust</span><span class="tag">Economic</span></div>
+              <p>In 2029, FDA and EMA reviewers begin asking healthcare companies to show model lineage, validation records, monitoring protocols, and change-control logic when AI-supported evidence is used. One pharma company faces a six-month review delay after failing to document how a model changed over time.</p>
+              <div class="scene">
+                <span class="scene-label">Scene · 2029</span>
+                <p style="margin:0;">Spring 2029. A peer pharma's BLA submission for an AI-supported oncology indication stalls when FDA reviewers request the model's full version history, validation records, and change-control documentation. The company cannot produce a continuous trail. Review is paused six months. A senior counsel writes to the CEO: "We had governance. We did not have governance evidence." Stock declines 4% on the disclosure. Three peer companies accelerate their lineage-tracking projects in the following quarter.</p>
+              </div>
+            </div>
+            <div class="signal negative">
+              <div class="signal-title">Negative external 2029 signal <span class="tag red">Use to challenge overbuilding</span></div>
+              <div class="pill-row"><span class="tag">Competitive</span><span class="tag">Economic</span></div>
+              <p>A smaller biotech uses external AI tools with minimal owned infrastructure and still moves a priority asset faster than larger competitors. Investors question whether enterprise AI governance is advantage or overhead.</p>
+              <div class="scene">
+                <span class="scene-label">Scene · 2029</span>
+                <p style="margin:0;">Mid-2029. A 400-person biotech reaches IND filing for a lead oncology candidate eight months ahead of three big-pharma competitors working in similar biology. Its AI stack is entirely external — vendor APIs, light orchestration, no enterprise governance layer. An analyst note observes: "They don't own a platform. They own a result." Two of the big-pharma CFOs are asked on calls whether their $800M+ infrastructure investments are competitive necessity or sunk cost theatre.</p>
+              </div>
+            </div>
+          </div>
+          <div class="why"><b>Why it matters:</b> Supports the CIO's thesis while preserving tension. Governance may become a license to compete, but not necessarily the source of growth.</div>
+        </div>
+
+        <div class="panel">
+          <h2>Additional assumption cards</h2>
+          <div class="accordions">
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">Companies without a common backbone run multiple incompatible versions of truth. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Capability</span><span class="tag">Operating Model</span><span class="tag">Economic</span></div><p>An analyst report describes a large pharma company that had to write off <span class="money">$200M+</span> in duplicated AI investments after discovering its commercial, R&D, and supply chain models used incompatible data definitions.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q2 2029. A Bernstein analyst note details a global pharma's $230M write-off after an internal audit reveals three franchises ran independent AI deployments using incompatible patient-segmentation logic. The same patient was scored differently by R&D, commercial, and market access models. The CIO is replaced. The new appointment letter from the CEO says: "We will build one truth, not three." The peer group reads the note carefully. Two CIOs accelerate their unification projects within ninety days.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Timing</span><span class="tag">Business Adoption</span></div><p>Another pharma company launches a central AI standard, but R&D teams bypass it because it slows urgent decisions. The company has common rules but loses speed in priority programs.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Mid-2029. A peer pharma's central AI governance standard is in place across the enterprise. The R&D head's quarterly review surfaces that three of the top five priority programs have built workarounds — local analytics, external vendors, shadow infrastructure. The franchise lead says: "We comply on paper. We move on speed." The Chief Data Officer asks the CEO whether the standard is governance or theatre. No answer comes.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Makes fragmentation concrete, but avoids making centralization obviously correct.</div></div></div>
+
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">Winners build a minimum backbone the business actually uses, not a grand platform. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Capability</span><span class="tag">Adoption</span><span class="tag">Margin</span></div><p>A peer company reports that a lightweight AI validation layer reduced repeat validation work across business units and lowered external vendor spend by <span class="money">$100–150M annually</span>, while accelerating approval of new AI use cases.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q4 2029. A peer pharma's two-year-old AI validation layer — built lean, used across all business units — reports $130M in annual external vendor savings and a 60% drop in time-to-approval for new AI use cases. The CIO tells the audit committee: "We didn't build a platform. We built a checkpoint." The validation layer covers 200 use cases at a build cost of $40M. A McKinsey case study cites it as the rare example of governance that paid for itself.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Execution Risk</span><span class="tag">Economic</span></div><p>A global healthcare company spends over <span class="money">$1B</span> on a multi-year AI platform, but internal adoption remains low because teams view it as compliance work rather than decision support.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q3 2029. A global healthcare peer reports its enterprise AI platform — $1.1B over four years — is now technically complete. Internal usage telemetry shows three franchises driving 80% of activity; the other six average less than ten queries per analyst per quarter. A franchise CFO writes to her CEO: "We built a platform our people don't use. What's the path to a platform that earns its way into their work?" No reply.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Distinguishes minimum viable backbone from platform theatre.</div></div></div>
+
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">Governance is necessary but not sufficient for advantage. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Regulatory</span><span class="tag">Risk</span></div><p>A governed AI process helps a peer company avoid a regulatory challenge after an AI-supported clinical decision is questioned. The company avoids delay and protects a major submission timeline.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">October 2029. An EMA reviewer questions an AI-supported endpoint analysis in a peer pharma's filing. The company produces full model lineage, validation records, and change logs within 72 hours. The endpoint is accepted. Approval timeline holds. Internal estimate of the avoided delay: four months and approximately $180M in deferred launch revenue. The Chief Quality Officer writes: "Governance didn't make the science right. It made it possible to defend." The investment thesis on capability-led survives intact.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Economic</span><span class="tag">Strategy</span></div><p>A highly compliant AI platform receives praise from regulators but has no measurable effect on trial speed, portfolio productivity, revenue timing, or operating margin after two years.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Late 2029. A peer pharma's AI deployment is the most validated in the industry — cited by FDA, profiled in the Wall Street Journal. A confidential 360 of senior R&D leaders shows 14 of them route around the central platform when speed matters. A board director writes the CEO: "We're paying twice — once for the governed platform, once for the speed teams that bypass it." AI operating cost is up 22%. Cycle times are flat.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Prevents the CIO thesis from becoming over-protected. The CFO must ask: governance toward what business outcome?</div></div></div>
+          </div>
+        </div>
+
+        <div class="panel articulation-panel">
+          <h2>MedTech articulation</h2>
+          <p>If signed, the candidate must say whether the unified backbone covers pharma and MedTech together or remains pharma-only. A backbone that excludes MedTech rebuilds the fragmentation problem in a different form. A backbone that includes MedTech accepts higher integration cost and longer time to value. Use the MedTech AI signals (cross-cutting section) to test this.</p>
+        </div>
+      </section>
+
+      <!-- ============== M&A ============== -->
+      <section id="ma" class="section">
+        <div class="hero">
+          <div class="doctrine-kicker">Doctrine 3</div>
+          <h1>Leap through M&A / partnerships</h1>
+          <p class="lead">J&J should use M&A, techbio partnerships, or targeted external moves to access capability, biology, or market signal faster than internal build.</p>
+        </div>
+        <div class="panel">
+          <div class="assumption">2035 assumption: some winners bought or partnered early for biology, capability, or data they could not build fast enough.</div>
+          <p><b>Plausibility in 2029:</b> Plausible. External moves can compress timing, but the value depends on what survives integration and who controls the learning.</p>
+          <div class="signal-grid">
+            <div class="signal positive">
+              <div class="signal-title">Positive external 2029 signal <span class="tag green">Use to legitimize buy/partner</span></div>
+              <div class="pill-row"><span class="tag">Economic</span><span class="tag">Timing</span><span class="tag">Growth</span></div>
+              <p>A competitor announces that a 2027 techbio partnership has produced two validated clinical candidates and shortened target-to-IND timing by 18 months. Analysts estimate the programs could pull forward <span class="money">$1–2B</span> in risk-adjusted future revenue if proof-of-concept holds.</p>
+              <div class="scene">
+                <span class="scene-label">Scene · 2029</span>
+                <p style="margin:0;">Q3 2029. A peer pharma reports two clinical candidates emerging from a 2027 techbio partnership — both ahead of internally generated programs in the same indications. Target-to-IND time: 14 months versus the company's historical 32-month median. Analysts at Morgan Stanley model $1.4B in risk-adjusted NPV pulled forward. The CFO tells investors: "We didn't buy a candidate. We bought a faster path." Two peer pharmas are asked the next quarter why their internal programs are still on the long timeline.</p>
+              </div>
+            </div>
+            <div class="signal negative">
+              <div class="signal-title">Negative external 2029 signal <span class="tag red">Use to challenge announcement logic</span></div>
+              <div class="pill-row"><span class="tag">Economic</span><span class="tag">Evidence</span></div>
+              <p>Another competitor's AI partnership receives strong investor attention at announcement, but after 18 months it has produced no visible clinical milestone, no portfolio decision, and no change to revenue guidance.</p>
+              <div class="scene">
+                <span class="scene-label">Scene · 2029</span>
+                <p style="margin:0;">Q3 2029. Eighteen months after a peer pharma's heralded AI partnership announcement (stock +6% on the day), the company's R&D update lists no clinical milestone, no portfolio reprioritization, no revenue timing change attributable to the deal. An analyst question on the call: "What has this partnership produced?" The CFO points to "early signals." The same analyst publishes a note titled "Eighteen months of optionality." The stock gives back the gain.</p>
+              </div>
+            </div>
+          </div>
+          <div class="why"><b>Why it matters:</b> Makes external moves credible but not automatically superior.</div>
+        </div>
+
+        <div class="panel">
+          <h2>Additional assumption cards</h2>
+          <div class="accordions">
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">Many deals fail because acquired capability does not survive integration. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Capability</span><span class="tag">Integration</span><span class="tag">Economic</span></div><p>A pharma company acquires a techbio platform and keeps the founding team semi-autonomous for two years. Retention remains high, and the platform contributes to three partnered development decisions. Analysts view the deal premium as justified.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q4 2029. Two years after a $1.6B techbio acquisition, a peer pharma's integration disclosure notes that 19 of 22 founding scientists remain. The platform has driven three partnered programs and one in-house candidate to clinical decision points. Premium-to-NPV is now viewed by analysts as recovered. The acquired CSO, retained as platform president, says: "They protected what they bought. That's why it still works." The case is referenced internally at three pharmas considering similar deals.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Talent</span><span class="tag">Economic</span><span class="tag">Execution Risk</span></div><p>A high-profile pharma-techbio acquisition loses most of its founding science and engineering team within 18 months. The buyer takes a <span class="money">$700M impairment</span> and delays the platform roadmap.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Eighteen months after a $2.1B techbio close, an analyst asks the buyer's CFO on the Q2 call how many founders remain. Her honest answer would be 4 of 23. She uses different words. Two weeks later the lead computational chemist exits, citing "decisions made by people who don't understand the science." A $700M impairment lands in Q4. The CEO letter blames "integration challenges." Internal Slack reads differently.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Keeps "buy" from sounding easy. The CFO must ask what is actually being bought: asset, people, data, operating model, or learning system.</div></div></div>
+
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">Partnerships may create hidden dependency if the company does not control the data and learning. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Strategic Control</span><span class="tag">Economic</span></div><p>A major pharma partnership succeeds because the pharma company retains rights to clinical data, validation methods, and model improvements. The partner supplies tools, but the sponsor owns the learning loop.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Mid-2029. A peer pharma's three-year AI partnership renews at favorable terms. The reason: the original 2026 contract reserved sponsor ownership of all model improvements trained on sponsor-generated data. The partner provided tools; the sponsor accumulated learning. Renewal pricing is flat. Switching cost — should it ever come — is estimated at zero. The CFO tells the audit committee: "We rented the tools. We owned the brain." The contract is internally referenced as the new template.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Strategic Control</span><span class="tag">Dependency</span></div><p>A competitor discovers that its AI partner owns key model improvements trained on sponsor-generated data. Switching costs rise, renewal pricing increases by <span class="money">40%</span>, and internal teams cannot replicate the capability.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q3 2029. Three years into a strategic AI partnership, a peer pharma's renewal negotiations stall. The partner argues that model improvements trained on sponsor-generated data are jointly owned. Switching cost estimates land at $340M and 30 months. Renewal terms are accepted at a 40% premium. The CFO tells the audit committee: "We thought we were buying tools. We were renting our future learning." The partnership office is restructured.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Turns partnership structure into a CFO issue, not a procurement issue.</div></div></div>
+
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">Markets may reward announcements before outcomes are proven. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Investor</span><span class="tag">Capital Markets</span></div><p>A competitor's AI-oncology acquisition adds <span class="money">$8B</span> to market capitalization within a week as analysts praise the growth narrative and capital discipline.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">April 2029. A competitor announces a $4.2B AI-oncology acquisition. Within a week, market cap rises $8B. JP Morgan publishes a note titled "The model premium": acquirers signaling AI capability commitment are being repriced higher independent of near-term clinical proof. Three CFOs at peer pharmas are asked on the next quarter's calls whether they have a comparable move planned. Two say "we're evaluating." One says "we will be patient." The patient one's stock declines 3%.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Investor</span><span class="tag">Evidence</span></div><p>Six months later, the same competitor has not disclosed any improvement in clinical success, revenue timing, or R&D productivity. Some analysts downgrade the stock, calling the original reaction "narrative ahead of proof."</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">April 2029, the announcement: a competitor's AI-oncology acquisition adds $8B in market cap on the day. October 2029, the question: an analyst asks for one example of how the platform changed a 2029 development decision. The CEO points to "early signals." The stock gives back 60% of the gain over the next two quarters. A J.P. Morgan note titles its section "Narrative ahead of proof." The board asks the CFO to draft the next acquisition criteria.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Creates ambiguity. The CFO must decide whether the competitor move is signal, theatre, or both.</div></div></div>
+          </div>
+        </div>
+
+        <div class="panel articulation-panel">
+          <h2>MedTech articulation</h2>
+          <p>If signed, the candidate must say whether the acquisition target covers pharma capability, MedTech capability, or a platform spanning both. Targets that span both are rare and command higher premiums. Targets covering one require the candidate to address why the other side of the enterprise was deprioritized. Use the MedTech AI signals (cross-cutting section) to test this.</p>
+        </div>
+      </section>
+
+      <!-- ============== TRANSVERSE: MEDTECH ============== -->
+      <section id="medtech" class="section">
+        <div class="hero transverse">
+          <div class="transverse-kicker">Cross-cutting consideration</div>
+          <h1>The MedTech AI question</h1>
+          <p class="lead">Throughout the conversation, regardless of doctrine. A test of enterprise judgment.</p>
+        </div>
+
+        <div class="panel transverse-panel">
+          <div class="assumption">MedTech AI is not a fourth doctrine. It is a transverse question that runs through each of the three doctrines and tests whether the candidate is making an enterprise decision or a pharma-only decision.</div>
+          <p>Whichever doctrine the candidate signs, the same question applies — does the doctrine extend to MedTech AI, remain pharma-only, or treat MedTech as a separate strategic question? The signals below can be evoked in any of the three doctrinal conversations. They are levers for testing whether the candidate sees J&J as an enterprise or as two adjacent businesses sharing a brand.</p>
+          <div class="why"><b>How to use:</b> Wait for the candidate to commit to a doctrine, then introduce one of these signals to test enterprise articulation. If the candidate dismisses MedTech as "out of scope" or "for another conversation," the doctrine has not been signed at the enterprise level — it has been signed pharma-only without that being said out loud.</div>
+        </div>
+
+        <div class="panel transverse-panel">
+          <div class="assumption">2035 assumption: advantage in healthcare may come as much from procedural intelligence and device ecosystems as from drugs.</div>
+          <p><b>Plausibility in 2029:</b> Plausible and strategically important. The installed base, workflow integration, and procedure-level data could become compounding assets if adoption and economics hold.</p>
+          <div class="signal-grid">
+            <div class="signal positive">
+              <div class="signal-title">Positive external 2029 signal <span class="tag green">Use to elevate MedTech</span></div>
+              <div class="pill-row"><span class="tag">MedTech Growth</span><span class="tag">Economic</span><span class="tag">Clinical</span></div>
+              <p>A leading surgical robotics company reports that its procedure-data platform reduced variation in a high-volume procedure and improved hospital throughput by <span class="money">8–10%</span>, supporting premium pricing and faster system adoption.</p>
+              <div class="scene">
+                <span class="scene-label">Scene · 2029</span>
+                <p style="margin:0;">Mid-2029. A surgical robotics leader publishes 18-month outcomes data from its procedure-data platform: 9.4% improvement in operating room throughput, 16% reduction in inter-surgeon variation, premium pricing held in renewal negotiations. Hospital adoption rates accelerate from 11 systems per quarter to 27. The company's CFO tells investors: "We sell hardware. We compound on data." Three peer device companies are asked on subsequent calls about their procedure-data strategies. Two have none. One has slides.</p>
+              </div>
+            </div>
+            <div class="signal negative">
+              <div class="signal-title">Negative external 2029 signal <span class="tag red">Use to test adoption</span></div>
+              <div class="pill-row"><span class="tag">Clinical Adoption</span><span class="tag">Economic</span></div>
+              <p>Another robotics platform shows strong technical performance but limited hospital adoption because it does not improve operating room throughput or reimbursement economics.</p>
+              <div class="scene">
+                <span class="scene-label">Scene · 2029</span>
+                <p style="margin:0;">Mid-2029. A peer robotics platform launches with strong technical benchmarks — 11% lower complication rates in pilot studies, faster setup times. Eighteen months in, hospital adoption has stalled at 23 systems against a launch target of 80. CFOs at three of the largest hospital systems write similar notes to procurement: "The technology is real. The economic case is not." Reimbursement coding has not caught up. The robotics CEO concedes: "We solved the surgery. We did not solve the hospital."</p>
+              </div>
+            </div>
+          </div>
+          <div class="why"><b>Why it matters:</b> Makes MedTech a real enterprise strategy issue, not an appendix.</div>
+        </div>
+
+        <div class="panel transverse-panel">
+          <h2>Additional MedTech assumption cards</h2>
+          <div class="accordions">
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">The real asset may be longitudinal procedural data and feedback loops, not the device itself. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Data Ownership</span><span class="tag">Capability</span><span class="tag">Economic</span></div><p>A MedTech competitor signs a multi-system hospital agreement giving it access to longitudinal procedure and outcomes data. Analysts describe the data loop as a potential high-margin software and service layer, not just hardware pull-through.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q3 2029. A peer device company signs a five-system hospital agreement granting access to procedure-level outcomes data across 240,000 procedures per year. Bernstein models a software and services layer worth 280 bps of segment operating margin once mature. The company's segment president tells investors: "The hardware is the entry point. The data is the franchise." Two competitors discover that comparable hospital networks are no longer available — the data partnerships are exclusive.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Strategic Control</span><span class="tag">Margin</span></div><p>A device company sells connected systems but fails to secure rights to procedure-level data. Hospitals and software partners capture the learning layer, while the manufacturer remains exposed to hardware margin pressure.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Late 2029. A device manufacturer reviews its three-year connected-systems strategy. The hardware sells. But hospital contracts grant the institutions sole rights to procedure-level data, and a third-party analytics firm has emerged as the layer surgeons trust for benchmarking. The manufacturer's segment president says: "We sold the body. Someone else is building the brain." Margin guidance is revised down 150 bps. The strategy team starts redesigning the contract.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Tests whether the CFO can see the learning loop as the asset.</div></div></div>
+
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">AI-enabled devices may fail if clinicians do not change behavior or workflows. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Adoption</span><span class="tag">Clinical Workflow</span><span class="tag">Economic</span></div><p>A surgical AI tool gains adoption because it reduces surgeon training time and lowers procedure variability, giving hospitals a measurable productivity case.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q4 2029. A peer's surgical AI assistant reaches 78% utilization across deployed sites within 12 months — well above the 35% industry benchmark for new surgical technology. Hospitals report 22% reduction in OR training time for new attendings and 14% lower procedure variability. The CMO of a major hospital system tells JAMA Surgery: "It earned its place at the table by making everyone faster, not by replacing anyone." The peer's CFO updates segment guidance up 200 bps.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Adoption</span><span class="tag">Workflow</span><span class="tag">Reimbursement</span></div><p>A technically accurate digital surgery tool stalls because surgeons see it as intrusive, hospitals cannot prove workflow benefit, and payers do not recognize incremental value.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Mid-2029. A surgical AI system launches across 38 US hospitals. Performance benchmarks are exceptional — 12% reduction in procedural variance. Eighteen months later, average daily utilization is 0.7 procedures per system, against a business case of 4.2. Twelve adopting surgeons say in interviews: "It tells me things I already know, slower than I can see them." Two health systems return their units. The segment president writes the CEO: "We have a product that works, not one that gets used."</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Keeps MedTech from becoming technology fantasy. Adoption, workflow, and economics determine whether the technology matters.</div></div></div>
+
+            <div class="acc"><div class="acc-head" onclick="toggleAcc(this)">MedTech AI may compound only for companies that invest early enough to build data scale. <span class="acc-arrow">›</span></div><div class="acc-body"><div class="signal-grid">
+              <div class="signal positive"><div class="pill-row"><span class="tag">Timing</span><span class="tag">Data Scale</span><span class="tag">Competitive Advantage</span></div><p>A robotics leader reports that five years of procedure-level data now improves device updates, surgeon training, and hospital benchmarking. Analysts estimate the software-and-data layer could add <span class="money">200–300 bps</span> to segment operating margin over time.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Late 2029. A robotics leader's investor day presents the compounding effect of five years of procedure data: device updates released 40% more frequently, surgeon training time cut 30%, hospital benchmarking sold as a separate service line. Analysts at three banks revise segment operating margin estimates up 250 bps over five years. The CEO closes with: "We made the bet in 2024. We are paid for it now." Two late-moving competitors are forced to address their data gaps publicly within the quarter.</p></div>
+              </div>
+              <div class="signal negative"><div class="pill-row"><span class="tag">Timing</span><span class="tag">Competitive Risk</span></div><p>A late-moving device company enters AI-enabled robotics in 2029 but lacks procedure data. It must buy datasets externally, delaying product learning and compressing margins.</p>
+                <div class="scene"><span class="scene-label">Scene · 2029</span><p style="margin:0;">Q4 2029. A device company launches its AI-enabled robotic platform — five years after the segment leader. Its product is technically competitive on day one but has no procedure-level data, no installed base feedback, no surgeon training corpus. The platform team buys datasets externally at $60M per year. The CFO tells the board: "We're paying others to learn what we should have started learning in 2024." Early margin is 14 points below the leader.</p></div>
+              </div>
+            </div><div class="why"><b>Why it matters:</b> Creates real capital tension: pharma urgency is nearer-term, but MedTech data advantage may require early investment.</div></div></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============== CATEGORIES ============== -->
+      <section id="categories" class="section">
+        <div class="hero categorical">
+          <div class="categorical-kicker">Cross-doctrine reading</div>
+          <h1>Categories grid</h1>
+          <p class="lead">A synthetic view of how each doctrine answers the four external dimensions the candidate cannot delegate.</p>
+        </div>
+
+        <div class="panel categorical-panel">
+          <p style="margin:0;">
+            This grid is not for use during the conversation. It is a <b>reading instrument</b> — for preparation and for debrief. It lets the consultant ask a different question: not "which doctrine did the candidate sign?" but "what did the candidate say across <b>all four doctrines</b> about payers, regulators, patients, investors?" A candidate who articulates one external dimension well but ignores another reveals an asymmetry in their strategic reading. The grid makes that asymmetry visible.
+          </p>
+          <div class="why" style="margin-top:14px;">
+            <b>Diagnostic use:</b> If the candidate's positions on a single category are internally consistent across doctrines, that is mature strategic thinking. If they are inconsistent — payer logic that supports Capability-led but quietly contradicts the Leap doctrine they ultimately signed — the consultant has surfaced a genuine gap to probe.
+          </div>
+        </div>
+
+        <div class="panel">
+          <h2>How each doctrine answers the four external dimensions</h2>
+          <table class="cat-table">
+            <thead>
+              <tr>
+                <th>External dimension</th>
+                <th>Science-led</th>
+                <th>Capability-led</th>
+                <th>Leap (M&A)</th>
+                <th>MedTech AI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Patient & physician</td>
+                <td>Adoption follows clinical evidence. Physicians trust AI-supported decisions when they accelerate clearly better candidates, not just more candidates.</td>
+                <td>Adoption follows traceability. Physicians trust AI when they can see how the recommendation was reached and what governs the model over time.</td>
+                <td>Adoption follows continuity. Physicians grow skeptical when acquired tools change branding, leadership, or clinical voice mid-stream.</td>
+                <td>Adoption follows workflow. Surgeons accept AI when it makes them faster or surer; reject it when it slows them or replaces judgment.</td>
+              </tr>
+              <tr>
+                <td>Payer & reimbursement</td>
+                <td>Payers reward speed-to-evidence. AI value is recognized when it shortens trial timelines or sharpens outcome arguments — not when it merely lowers internal cost.</td>
+                <td>Payers reward auditable decisions. Outcomes-based contracts increasingly require traceability of how AI shaped clinical or pricing claims.</td>
+                <td>Payers discount unintegrated assets. The M&A premium does not transfer through reimbursement until acquired capability appears in the sponsor's evidence base.</td>
+                <td>Payers reward bundled outcomes. MedTech AI is valued when it measurably reduces total cost of episode, not when it improves a procedural metric in isolation.</td>
+              </tr>
+              <tr>
+                <td>Regulator</td>
+                <td>Regulators accept AI-supported submissions when sponsors show consistent decision quality across filings — not one-off success.</td>
+                <td>Regulators favor companies whose decision systems were built for inspection from the start. Lifecycle traceability becomes a precondition.</td>
+                <td>Regulators scrutinize acquired AI assets more harshly than internally developed ones. Capability and accountability are presumed not to transfer through M&A.</td>
+                <td>Regulators create distinct categories for adaptive surgical AI. Real-world performance monitoring favors operators with installed bases.</td>
+              </tr>
+              <tr>
+                <td>Investor & market signal</td>
+                <td>Investors read Science-led as discipline if portfolio decisions visibly change. They read it as cost theatre if savings are not paired with growth.</td>
+                <td>Investors read Capability-led as patience if it produces a defensible operating advantage. They read it as overhead if governance never converts to growth.</td>
+                <td>Markets reward the announcement before outcomes are proven. Initial premium is real; sustained premium requires post-deal evidence.</td>
+                <td>Investors price compounding data scale. MedTech AI commands premium when feedback loops are visible; commodity pricing when they are not.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel categorical-panel">
+          <h2 style="color:var(--blue-deep);font-size:18px;margin:0 0 12px;">Reading the candidate's grid</h2>
+          <p style="margin:0 0 10px;">After the session, fill the same grid with what the candidate actually said. Three questions then surface naturally:</p>
+          <p style="margin:0 0 8px;"><b>1. Coverage.</b> Did the candidate articulate a position on all four dimensions, or only on the dimensions where the doctrine they preferred made the case easy?</p>
+          <p style="margin:0 0 8px;"><b>2. Internal consistency.</b> Are the positions across the four dimensions mutually reinforcing — or do they contradict the doctrine the candidate ultimately signed?</p>
+          <p style="margin:0;"><b>3. Owned versus delegated.</b> Did the candidate carry the external dimensions personally, or did they defer to the working groups' validation? The CFO who signs without owning the external reading has not signed at the right altitude.</p>
+        </div>
+      </section>
+
+    </main>
+  </div>
+  <script>
+    function show(id, el) {
+      document.querySelectorAll('.section').forEach(function(s){ s.classList.remove('active'); });
+      document.getElementById(id).classList.add('active');
+      document.querySelectorAll('.nav-item').forEach(function(n){ n.classList.remove('active'); });
+      el.classList.add('active');
+      document.querySelector('.main').scrollTop = 0;
+    }
+    function toggleAcc(header) {
+      var body = header.nextElementSibling;
+      var arrow = header.querySelector('.acc-arrow');
+      var isOpen = body.classList.contains('open');
+      var parent = header.closest('.accordions');
+      parent.querySelectorAll('.acc-body').forEach(function(b){ b.classList.remove('open'); });
+      parent.querySelectorAll('.acc-arrow').forEach(function(a){ a.classList.remove('open'); });
+      if (!isOpen) { body.classList.add('open'); arrow.classList.add('open'); }
+    }
+    function togglePremise(toggle) {
+      var longBlock = toggle.nextElementSibling;
+      var label = toggle.querySelector('.pt-label');
+      var isOpen = longBlock.classList.contains('open');
+      if (isOpen) {
+        longBlock.classList.remove('open');
+        toggle.classList.remove('open');
+        label.textContent = 'Read more';
+      } else {
+        longBlock.classList.add('open');
+        toggle.classList.add('open');
+        label.textContent = 'Read less';
+      }
+    }
+  </script>
+</body>
+</html>
