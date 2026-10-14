@@ -41,6 +41,7 @@ function draw(parent, drawables, t0, dur=0.8, o={}){
     const e=el('path',{d:p.d, fill:solid?p.fill:'none', stroke:solid?'none':(p.stroke||C.ink),
       'stroke-width':p.strokeWidth||2, 'stroke-linecap':'round','stroke-linejoin':'round'},g);
     if(!solid){ e.setAttribute('pathLength',1); e.setAttribute('stroke-dasharray','1 1'); }
+    if(solid) e.dataset.solid='1';
     paths.push({e,solid});
   }));
   const n=paths.filter(p=>!p.solid).length||1;
@@ -114,3 +115,21 @@ function custom(fn){ ITEMS.push({render:fn}); }
 
 function render(t){ ITEMS.forEach(i=>i.render(t)); }
 window.render=render;
+
+// Continuity: a group that stays on screen from scene `a` through the end of scene `b`.
+function carryGroup(a,b){
+  const A=TL[a], B=TL[b], last=TIMELINE[TIMELINE.length-1].id===b, g=el('g',{id:`carry_${a}_${b}`});
+  ITEMS.push({render:t=>{
+    let o=clamp((t-A.start)/0.3); if(!last) o=Math.min(o,clamp((B.end-t)/0.3));
+    if(t<A.start-0.01||(!last&&t>B.end+0.01)) o=0;
+    g.setAttribute('opacity',o); g.style.display=o>0?'':'none';
+  }});
+  return g;
+}
+// At the cut (t0) a carried drawing returns from its accent colour to ink.
+function recolor(g,t0,from,to,fillOp=1){
+  ITEMS.push({render:t=>{ const after=t>=t0;
+    g.querySelectorAll('path').forEach(p=>{
+      if(p.dataset.solid){ p.setAttribute('fill',after?to:from); p.setAttribute('fill-opacity',after?fillOp:1); }
+      else p.setAttribute('stroke',after?to:from); }); }});
+}

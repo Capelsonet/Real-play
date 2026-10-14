@@ -3,7 +3,7 @@ import json, sys
 import numpy as np, soundfile as sf
 from kokoro_onnx import Kokoro
 
-VOICE, LANG, SPEED = "bf_emma", "en-gb", 1.06
+VOICE, LANG, SPEED = "bm_george", "en-gb", 1.06
 k = Kokoro("kokoro-v1.0.onnx", "voices-v1.0.bin")
 script = json.load(open("script.json"))
 
